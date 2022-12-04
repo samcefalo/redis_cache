@@ -1,14 +1,13 @@
 package me.samcefalo.sqlcache.database;
 
-import lombok.Getter;
 import org.sqlite.SQLiteDataSource;
 
 import javax.sql.DataSource;
 
 public class SqlLiteProvider implements DataSourceProvider {
 
-    @Getter
-    private String path, url;
+    private final String path;
+    private final String url;
 
     public SqlLiteProvider(String path) {
         this.path = path;

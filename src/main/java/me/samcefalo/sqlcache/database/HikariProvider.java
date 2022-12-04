@@ -1,13 +1,14 @@
 package me.samcefalo.sqlcache.database;
 
-import lombok.Getter;
-
 import javax.sql.DataSource;
 
-public class HikariProvider implements DataSourceProvider{
+public class HikariProvider implements DataSourceProvider {
 
-    @Getter
-    private String host, database, user, password, url;
+    private final String host;
+    private final String database;
+    private final String user;
+    private final String password;
+    private final String url;
 
     public HikariProvider(String host, String database, String user, String password) {
         this.host = host;

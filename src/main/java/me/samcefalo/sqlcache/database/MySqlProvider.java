@@ -1,14 +1,16 @@
 package me.samcefalo.sqlcache.database;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
-import lombok.Getter;
 
 import javax.sql.DataSource;
 
 public class MySqlProvider implements DataSourceProvider {
 
-    @Getter
-    private String host, database, user, password, url;
+    private final String host;
+    private final String database;
+    private final String user;
+    private final String password;
+    private final String url;
 
     public MySqlProvider(String host, String database, String user, String password) {
         this.host = host;
