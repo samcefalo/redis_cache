@@ -1,19 +1,21 @@
 package me.samcefalo.sqlcache;
 
+import me.samcefalo.sqlcache.database.DataSourceProvider;
 import me.samcefalo.sqlcache.entities.Car;
 import me.samcefalo.sqlcache.entities.Machine;
-import me.samcefalo.sqlcache.database.DataSourceProvider;
 import me.samcefalo.sqlcache.service.CarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 public class Main {
 
-    private static Logger logger = LoggerFactory.getLogger(Main.class);
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         DataSourceProvider provider = DataSourceFactory.HikariProviderInstance();
         //DataSourceProvider provider = DataSourceFactory.MySqlProviderInstance();
         //DataSourceProvider provider = DataSourceFactory.SqliteProviderInstance();
@@ -25,7 +27,13 @@ public class Main {
 
         carService.insert(car);
 
-        System.out.println(carService.getById(car.getId()));
+        Future<Car> carFuture = carService.getById(car.getId());
+
+        while (!carFuture.isDone()) {
+
+        }
+
+        System.out.println(carFuture.get());
 
     }
 

@@ -13,7 +13,7 @@ import java.util.UUID;
 //Using DBUtils
 public class CarDAO implements DAO<Car, UUID> {
 
-    private QueryRunner runner;
+    private final QueryRunner runner;
 
     public CarDAO(DataSource dataSource) {
         this.runner = new QueryRunner(dataSource);
@@ -22,6 +22,7 @@ public class CarDAO implements DAO<Car, UUID> {
     public Car getById(UUID id) {
         ResultSetHandler<Car> handler = new BeanHandler<Car>(Car.class);
 
+        //TODO FIX Cast to Entity
         try {
             return runner.query(
                     "SELECT * FROM car WHERE id=?", handler, id.toString());

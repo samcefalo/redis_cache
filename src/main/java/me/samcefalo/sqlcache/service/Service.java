@@ -1,8 +1,13 @@
 package me.samcefalo.sqlcache.service;
 
+import me.samcefalo.sqlcache.entities.Car;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 public interface Service<T, I> {
 
-    T getById(I id);
+    Future<Car> getById(I id) throws ExecutionException, InterruptedException;
 
     void insert(T object);
 

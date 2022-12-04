@@ -7,7 +7,7 @@ import redis.clients.jedis.JedisPooled;
 
 public class CarCache implements Cache<Car> {
 
-    private JedisPooled jedisPooled;
+    private final JedisPooled jedisPooled;
 
     public CarCache(JedisProvider jedisProvider) {
         this.jedisPooled = jedisProvider.getJedisPooled();
@@ -22,7 +22,7 @@ public class CarCache implements Cache<Car> {
     @Override
     public Car get(String key) {
         Gson gson = new Gson();
-        String json = this.jedisPooled.get(key);
+        String json = jedisPooled.get(key);
         return gson.fromJson(json, Car.class);
     }
 
