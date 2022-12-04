@@ -1,0 +1,13 @@
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\redis\JedisProvider.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\cache\CarCache.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\database\HikariDataSource.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\database\SqlLiteDataSource.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\database\DataSource.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\database\MySqlDataSource.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\entities\Machine.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\entities\Car.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\service\CarService.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\dao\CarDAO.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\cache\Cache.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\Main.java
+C:\Users\Family\IdeaProjects\SQLCache\src\main\java\me\samcefalo\sqlcache\DataSourceFactory.java

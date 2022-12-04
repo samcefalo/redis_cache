@@ -1,0 +1,14 @@
+me\samcefalo\sqlcache\cache\Cache.class
+me\samcefalo\sqlcache\redis\JedisProvider.class
+me\samcefalo\sqlcache\entities\Car.class
+me\samcefalo\sqlcache\service\CarService.class
+me\samcefalo\sqlcache\cache\CarCache.class
+me\samcefalo\sqlcache\database\DataSource.class
+me\samcefalo\sqlcache\DataSourceFactory.class
+me\samcefalo\sqlcache\entities\Machine.class
+me\samcefalo\sqlcache\database\HikariDataSource.class
+me\samcefalo\sqlcache\Main.class
+me\samcefalo\sqlcache\dao\CarDAO.class
+me\samcefalo\sqlcache\entities\Car$CarBuilder.class
+me\samcefalo\sqlcache\database\SqlLiteDataSource.class
+me\samcefalo\sqlcache\database\MySqlDataSource.class
