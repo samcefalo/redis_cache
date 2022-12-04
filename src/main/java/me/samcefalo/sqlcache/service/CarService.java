@@ -4,15 +4,14 @@ import me.samcefalo.sqlcache.JedisFactory;
 import me.samcefalo.sqlcache.cache.CarCache;
 import me.samcefalo.sqlcache.dao.CarDAO;
 import me.samcefalo.sqlcache.entities.Car;
-import me.samcefalo.sqlcache.redis.JedisProvider;
 
 import javax.sql.DataSource;
 import java.util.UUID;
 
 public class CarService implements Service<Car, UUID> {
 
-    private CarCache carCache;
-    private CarDAO carDAO;
+    private final CarCache carCache;
+    private final CarDAO carDAO;
 
     public CarService(DataSource dataSource) {
         this.carDAO = new CarDAO(dataSource);
@@ -21,13 +20,14 @@ public class CarService implements Service<Car, UUID> {
 
     @Override
     public Car getById(UUID id) {
-        if (this.isCached(id)) {
+        Car car = this.carCache.get("car:" + id);
+        if (car != null) {
             System.out.println("Getting by Cache");
-            return this.carCache.get("car:" + id);
+            return car;
         } else {
             System.out.println("Getting by Database");
-            Car car = this.carDAO.getById(id);
-            this.carCache.set("car:"+ id, car);
+            car = this.carDAO.getById(id);
+            this.carCache.set("car:" + id, car);
             return car;
         }
     }
@@ -48,10 +48,6 @@ public class CarService implements Service<Car, UUID> {
     public void delete(UUID id) {
         this.carCache.delete("car:" + id);
         this.carDAO.delete(id);
-    }
-
-    private boolean isCached(UUID id) {
-        return this.carCache.get("car:" + id) != null;
     }
 
 }
