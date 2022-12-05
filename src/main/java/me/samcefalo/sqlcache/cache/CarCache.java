@@ -7,6 +7,7 @@ import redis.clients.jedis.JedisPooled;
 
 public class CarCache implements Cache<Car> {
 
+    private final int cacheTimeSeconds = 600;
     private final JedisPooled jedisPooled;
 
     public CarCache(JedisProvider jedisProvider) {
@@ -16,7 +17,7 @@ public class CarCache implements Cache<Car> {
     @Override
     public void set(String key, Car value) {
         Gson gson = new Gson();
-        this.jedisPooled.set(key, gson.toJson(value));
+        this.jedisPooled.setex(key, cacheTimeSeconds, gson.toJson(value));
     }
 
     @Override
