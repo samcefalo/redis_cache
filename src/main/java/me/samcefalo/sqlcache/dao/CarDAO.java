@@ -1,9 +1,8 @@
 package me.samcefalo.sqlcache.dao;
 
+import me.samcefalo.sqlcache.dao.handlers.CarResultSetHandler;
 import me.samcefalo.sqlcache.entities.Car;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
-import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -20,12 +19,10 @@ public class CarDAO implements DAO<Car, UUID> {
     }
 
     public Car getById(UUID id) {
-        ResultSetHandler<Car> handler = new BeanHandler<Car>(Car.class);
 
-        //TODO FIX Cast to Entity
         try {
             return runner.query(
-                    "SELECT * FROM car WHERE id=?", handler, id.toString());
+                    "SELECT * FROM car WHERE id=?", new CarResultSetHandler(), id.toString());
         } catch (SQLException e) {
             e.printStackTrace();
         }
