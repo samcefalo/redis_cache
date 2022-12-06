@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
  */
 public abstract class RedissonCache<T, I> implements Cache<T, I> {
 
-    private static final int CACHE_TIME = 600;
+    private static final int CACHE_TIME_SECONDS = 600;
     @Getter
     private RMapCache<I, T> map;
     @Getter
@@ -47,7 +47,7 @@ public abstract class RedissonCache<T, I> implements Cache<T, I> {
 
     @Override
     public void setOrUpdate(I key, T value) {
-        this.setOrUpdate(key, value, CACHE_TIME, TimeUnit.SECONDS);
+        this.setOrUpdate(key, value, CACHE_TIME_SECONDS, TimeUnit.SECONDS);
     }
 
     public void setOrUpdate(I key, T value, int time, TimeUnit timeUnit) {
