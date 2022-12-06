@@ -1,5 +1,5 @@
 # Redis Cache
-Database interface using redis
+Database cache interface using redis
 
 ![Alt text](/image.png?raw=true "Diagram")
 
