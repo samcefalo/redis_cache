@@ -1,7 +1,7 @@
 # Redis Cache
-Database interface using redis
+Database cache interface using redis
 
-![Alt text](/SERVICE.png?raw=true "Diagram")
+![Alt text](/image.png?raw=true "Diagram")
 
 ## Install & Connect redis with WSL2
 curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
