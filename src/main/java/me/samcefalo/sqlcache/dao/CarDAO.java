@@ -10,6 +10,10 @@ import java.util.Objects;
 import java.util.UUID;
 
 //Using DBUtils
+/**
+ * Implementation example of {@link DAO}
+ * using {@link org.apache.commons.dbutils.DbUtils} to handle JDBC
+ */
 public class CarDAO implements DAO<Car, UUID> {
 
     private final QueryRunner runner;

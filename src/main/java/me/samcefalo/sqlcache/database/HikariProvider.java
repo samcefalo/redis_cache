@@ -2,6 +2,9 @@ package me.samcefalo.sqlcache.database;
 
 import javax.sql.DataSource;
 
+/**
+ * Provider of {@link com.zaxxer.hikari.HikariDataSource}
+ */
 public class HikariProvider implements DataSourceProvider {
 
     private final String host;

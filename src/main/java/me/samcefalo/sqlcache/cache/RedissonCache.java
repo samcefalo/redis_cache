@@ -3,8 +3,9 @@ package me.samcefalo.sqlcache.cache;
 import lombok.Getter;
 import me.samcefalo.sqlcache.cache.options.MapLoader;
 import me.samcefalo.sqlcache.cache.options.MapWriter;
+import me.samcefalo.sqlcache.cache.options.WriterOptions;
 import me.samcefalo.sqlcache.dao.DAO;
-import me.samcefalo.sqlcache.redis.JedisProvider;
+import me.samcefalo.sqlcache.redis.RedissonProvider;
 import org.redisson.api.MapOptions;
 import org.redisson.api.RMapCache;
 import org.redisson.api.RedissonClient;
@@ -12,6 +13,12 @@ import org.redisson.api.RedissonClient;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Implementation of {@link Cache} combining Redisson with {@link DAO}
+ *
+ * @param <T>
+ * @param <I>
+ */
 public abstract class RedissonCache<T, I> implements Cache<T, I> {
 
     @Getter
@@ -21,9 +28,9 @@ public abstract class RedissonCache<T, I> implements Cache<T, I> {
     private final RedissonClient redisson;
     private final DAO dao;
 
-    public RedissonCache(JedisProvider jedisProvider, DAO dao, String name) {
+    public RedissonCache(RedissonProvider redissonProvider, DAO dao, String name) {
         this.name = name;
-        this.redisson = jedisProvider.getRedisson();
+        this.redisson = redissonProvider.getRedisson();
         this.dao = dao;
         this.configureMap(new WriterOptions());
     }
@@ -38,8 +45,12 @@ public abstract class RedissonCache<T, I> implements Cache<T, I> {
     }
 
     @Override
-    public void set(I key, T value) {
+    public void setOrUpdate(I key, T value) {
         map.put(key, value, 600, TimeUnit.SECONDS);
+    }
+
+    public void setOrUpdate(I key, T value, int time, TimeUnit timeUnit) {
+        map.put(key, value, time, timeUnit);
     }
 
     @Override
@@ -56,4 +67,5 @@ public abstract class RedissonCache<T, I> implements Cache<T, I> {
     public void clear() {
         map.clear();
     }
+
 }

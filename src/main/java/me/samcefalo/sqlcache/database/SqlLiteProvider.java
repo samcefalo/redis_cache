@@ -4,6 +4,9 @@ import org.sqlite.SQLiteDataSource;
 
 import javax.sql.DataSource;
 
+/**
+ * Provider of {@link SqlLiteProvider}
+ */
 public class SqlLiteProvider implements DataSourceProvider {
 
     private final String path;

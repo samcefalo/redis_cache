@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
+/**
+ * Implementation example of {@link ResultSetHandler}
+ */
 public class CarResultSetHandler implements ResultSetHandler<Car> {
 
     @Override

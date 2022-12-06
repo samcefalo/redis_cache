@@ -1,12 +1,12 @@
 package me.samcefalo.sqlcache;
 
-import me.samcefalo.sqlcache.redis.JedisProvider;
+import me.samcefalo.sqlcache.redis.RedissonProvider;
 
 public class JedisFactory {
 
-    private static JedisProvider provider = new JedisProvider("localhost", 6379);
+    private static final RedissonProvider provider = new RedissonProvider("localhost", 6379);
 
-    public static JedisProvider JedisProviderInstance() {
+    public static RedissonProvider JedisProviderInstance() {
         return provider;
     }
 }

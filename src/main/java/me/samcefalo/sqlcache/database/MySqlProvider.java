@@ -4,6 +4,9 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 
 import javax.sql.DataSource;
 
+/**
+ * Provider of {@link MysqlDataSource}
+ */
 public class MySqlProvider implements DataSourceProvider {
 
     private final String host;

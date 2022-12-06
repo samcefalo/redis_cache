@@ -6,7 +6,7 @@ import java.util.concurrent.Future;
 
 public interface Cache<T, I> {
 
-    void set(I key, T value);
+    void setOrUpdate(I key, T value);
 
     Future<T> get(I key);
 

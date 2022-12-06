@@ -10,6 +10,9 @@ import javax.sql.DataSource;
 import java.util.UUID;
 import java.util.concurrent.Future;
 
+/**
+ * Implementation example of {@link Service}
+ */
 public class CarService implements Service<Car, UUID> {
 
     private final Cache<Car, UUID> cache;
@@ -25,12 +28,12 @@ public class CarService implements Service<Car, UUID> {
 
     @Override
     public void insert(Car car) {
-        this.cache.set(car.getId(), car);
+        this.cache.setOrUpdate(car.getId(), car);
     }
 
     @Override
     public void update(Car car) {
-        this.cache.set(car.getId(), car);
+        this.cache.setOrUpdate(car.getId(), car);
     }
 
     @Override

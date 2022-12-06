@@ -1,4 +1,4 @@
-package me.samcefalo.sqlcache.cache;
+package me.samcefalo.sqlcache.cache.options;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
