@@ -6,7 +6,10 @@ public interface DAO<T, I> {
 
     void insert(T object);
 
+    void insertOrUpdate(T object);
+
     void update(T object);
 
     void delete(I id);
+
 }

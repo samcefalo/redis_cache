@@ -1,13 +1,19 @@
 package me.samcefalo.sqlcache.cache;
 
-import me.samcefalo.sqlcache.entities.Car;
+import org.redisson.api.RMap;
 
-public interface Cache<T> {
+import java.util.concurrent.Future;
 
-    void set(String key, T value);
+public interface Cache<T, I> {
 
-    Car get(String key);
+    void set(I key, T value);
 
-    void delete(String key);
+    Future<T> get(I key);
+
+    void delete(I key);
+
+    void clear();
+
+    RMap getMap();
 
 }

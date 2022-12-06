@@ -21,7 +21,7 @@ public class Main {
         //DataSourceProvider provider = DataSourceFactory.SqliteProviderInstance();
 
         Machine machine = new Machine("V8 Spider", "Combustion");
-        Car car = Car.builder().id(UUID.randomUUID()).name("Ferrari").age("2000").machine(machine).build();
+        Car car = Car.builder().id(UUID.randomUUID()).name("Buggati").age("2010").machine(machine).build();
 
         CarService carService = new CarService(provider.getDataSource());
 

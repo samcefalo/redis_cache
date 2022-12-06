@@ -41,7 +41,36 @@ public class CarDAO implements DAO<Car, UUID> {
                             ",age" +
                             ",machine_name" +
                             ",machine_type) VALUES (?,?,?,?,?)"
-                    ,car.getId().toString()
+                    , car.getId().toString()
+                    , car.getName()
+                    , car.getAge()
+                    , car.getMachine().getMachineName()
+                    , car.getMachine().getMachineType());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void insertOrUpdate(Car car) {
+        if (Objects.isNull(car)) {
+            throw new NullPointerException("Invalid car object.");
+        }
+
+        try {
+            runner.update("INSERT INTO car (id" +
+                            ",name" +
+                            ",age" +
+                            ",machine_name" +
+                            ",machine_type) VALUES (?,?,?,?,?) " +
+                            "ON DUPLICATE KEY UPDATE " +
+                            "name= ?, age=? , machine_name = ?, machine_type = ?"
+                    , car.getId().toString()
+                    , car.getName()
+                    , car.getAge()
+                    , car.getMachine().getMachineName()
+                    , car.getMachine().getMachineType()
+                    //UPDATE
                     , car.getName()
                     , car.getAge()
                     , car.getMachine().getMachineName()
