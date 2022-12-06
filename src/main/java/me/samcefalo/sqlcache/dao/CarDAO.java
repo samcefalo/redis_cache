@@ -22,6 +22,7 @@ public class CarDAO implements DAO<Car, UUID> {
         this.runner = new QueryRunner(dataSource);
     }
 
+    @Override
     public Car getById(UUID id) {
 
         try {
@@ -34,6 +35,7 @@ public class CarDAO implements DAO<Car, UUID> {
         return null;
     }
 
+    @Override
     public void insert(Car car) {
         if (Objects.isNull(car)) {
             throw new NullPointerException("Invalid car object.");
@@ -84,6 +86,7 @@ public class CarDAO implements DAO<Car, UUID> {
         }
     }
 
+    @Override
     public void update(Car car) {
         if (Objects.isNull(car)) {
             throw new NullPointerException("Invalid car object.");
@@ -104,6 +107,7 @@ public class CarDAO implements DAO<Car, UUID> {
         }
     }
 
+    @Override
     public void delete(UUID id) {
         try {
             runner.update("DELETE FROM car WHERE id=?", id.toString());

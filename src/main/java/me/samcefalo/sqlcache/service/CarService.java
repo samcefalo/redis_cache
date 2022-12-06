@@ -1,6 +1,6 @@
 package me.samcefalo.sqlcache.service;
 
-import me.samcefalo.sqlcache.JedisFactory;
+import me.samcefalo.sqlcache.RedisFactory;
 import me.samcefalo.sqlcache.cache.Cache;
 import me.samcefalo.sqlcache.cache.CarCache;
 import me.samcefalo.sqlcache.dao.CarDAO;
@@ -18,7 +18,7 @@ public class CarService implements Service<Car, UUID> {
     private final Cache<Car, UUID> cache;
 
     public CarService(DataSource dataSource) {
-        this.cache = new CarCache(JedisFactory.JedisProviderInstance(), new CarDAO(dataSource));
+        this.cache = new CarCache(RedisFactory.RedissonProviderInstance(), new CarDAO(dataSource));
     }
 
     @Override

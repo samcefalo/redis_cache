@@ -46,7 +46,7 @@ public abstract class RedissonCache<T, I> implements Cache<T, I> {
 
     @Override
     public void setOrUpdate(I key, T value) {
-        map.put(key, value, 600, TimeUnit.SECONDS);
+        this.setOrUpdate(key, value, 600, TimeUnit.SECONDS);
     }
 
     public void setOrUpdate(I key, T value, int time, TimeUnit timeUnit) {
