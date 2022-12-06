@@ -1,5 +1,5 @@
 # Redis Cache
-Using Redis Cache with SQL
+Database interface using redis
 
 ![Alt text](/SERVICE.png?raw=true "Diagram")
 
